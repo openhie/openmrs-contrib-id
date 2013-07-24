@@ -1,0 +1,33 @@
+{{#extend "title"}}OpenMRS ID - Login{{/extend}}
+{{#extend "headline"}}Login to the Dashboard{{/extend}}
+
+<form action="/login" method="post">
+	<p></p>
+	
+	<input type="hidden" name="destination" id="redirect-to">
+	
+	<div class="field {{check "class" fail.loginusername}}">
+		<label>OpenMRS ID</label>
+		<input type="text" name="loginusername" placeholder="OpenMRS ID" {{check "value" values.loginusername}}>
+		<span class="description">
+			{{#explanation fail.loginusername}}
+			A username must be supplied to log in.
+			Make sure you are entering your OpenMRS ID, not your email address.
+			{{/explanation}}
+			This is the same account you use across the OpenMRS Community. If you need an account, <a href="/signup">sign up here</a>.
+		</span>
+	</div>
+	
+	<div class="field {{check "class" fail.loginpassword}}">
+		<label>Password</label>
+		<input type="password" name="loginpassword" placeholder="Password">
+		<span class="description">
+			{{#explanation fail.loginpasword}}
+			A password must be supplied to log in.
+			{{/explanation}}
+		If you have forgotten your password, you can <a href="/reset">reset it here</a>.
+		</span>
+	</div>
+	
+	<input type="submit" value="Login to the Dashboard &#187;">
+</form>

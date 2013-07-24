@@ -1,0 +1,73 @@
+{{#extend "title"}}Your Profile – OpenMRS ID{{/extend}}
+{{#extend "headline"}}{{user.displayName}}'s Profile{{/extend}}
+
+{{#extend "sidebar"}}
+    {{sidebarItem "editprofile_avatar"}}
+{{/extend}}
+
+<form action="/profile" method="post">
+    
+    <div class="field noedit">
+        <label>Username</label>
+        <p>{{user.username}}</p>
+    </div>
+    
+    {{#n}}<div class="field two-up {{check "class" fail.firstname}} 
+        {{check "class" fail.lastname}}">{{/n}}
+            <label>Name</label>
+
+            {{#n}}<input type="text" name="firstname" placeholder="Given Name"
+                {{check "value" values.firstname "or"user.firstname}}>{{/n}}
+            {{#n}}<input type="text" name="lastname" placeholder="Surname"
+                {{check "value" values.lastname "or"user.lastname}}>{{/n}}
+
+            <span class="description">
+                {{#explanation fail.firstname fail.lastname}}
+                    Both a first and last name are required.
+                {{/explanation}}
+                Your name identifies you across the OpenMRS Community.
+            </span>
+    </div>
+
+    <div class="multi-field profile-emails">
+
+        {{#each emails}}
+        {{#n}}
+        <div class="field
+            {{check "class" failed}}
+            {{email_verification this "class"}}">
+        {{/n}}
+            <label>
+                {{#if primary}}Primary{{else}}Secondary{{/if}} Email
+            </label>
+
+            {{#n}}
+            <input type="text" name="emails" placeholder="Secondary 
+                Email" {{check "value" failValue "or" address}}>
+            {{/n}}
+
+            {{#n}}
+            <input type="radio" name="primary-email"
+                value="{{@index}}" {{#if primary}}checked{{/if}}>
+            {{/n}}
+
+            <span class="description">
+                {{#if_inprogress this}}
+                <span class="inprogresstext">This email address must be
+                    verified before it can be used. Verification has
+                    been sent.</span>
+                {{/if_inprogress}}
+                {{#explanation failed}}
+                    Please enter a valid email address.
+                {{/explanation}}
+                Receive email from OpenMRS applications and community mailing lists at any address.
+            </span>
+                       
+        </div>
+        {{/each}}
+
+    </div>
+    
+    
+    <input type="submit" value="Update Profile &#187;">
+</form>

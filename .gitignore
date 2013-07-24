@@ -14,11 +14,12 @@ app/user-modules
 
 # Conf Files #
 ##############
-app/conf.js
+conf.js
 
 # Local Dev Resources #
 #######################
 *.sublime-*
+.c9revisions
 
 # OS generated files #
 ######################

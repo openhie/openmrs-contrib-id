@@ -1,0 +1,29 @@
+{{#extend "title"}}OpenMRS ID - Reset Password{{/extend}}
+{{#extend "headline"}}Reset Your Password{{/extend}}
+
+<form action="#" method="post">
+    <p>Enter a new password for <strong>{{username}}</strong> in the field below.</p>
+    
+    <div class="field {{check "class" fail.newpassword}}">
+        <input type="password" name="newpassword" placeholder="New Password" autofocus>
+        <label>New Password</label>
+        <span class="description">
+            {{#explanation fail.newpassword}}
+                Please enter a valid password.
+            {{/explanation}}
+            Passwords must be at least 8 characters in length.
+        </span>
+    </div>
+    
+    <div class="field {{check "class" fail.confirmpassword}}">
+        <input type="password" name="confirmpassword" placeholder="Confirm Password">
+        <label>Confirm Password</label>
+        <span class="description">
+            {{#explanation fail.confirmpassword}}
+                Passwords did not match.
+            {{/explanation}}
+            Check for typos!
+        </span>
+    </div>
+    <input type="submit" value="Reset Password &#187;">             
+</form>

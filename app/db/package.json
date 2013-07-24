@@ -1,0 +1,8 @@
+{
+    "name": "db",
+    "version": "0.0.1",
+    "author": "elliottwilliams",
+    "dependencies": [
+        "sequelize", "~1.1.4"
+    ]
+}

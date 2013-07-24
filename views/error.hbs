@@ -1,0 +1,22 @@
+{{#extend "title"}}
+Error – OpenMRS ID
+{{/extend}}
+
+{{#with error}}
+
+{{#extend "headline"}}
+{{#if status}}
+    <em>{{status}}</em>
+{{/if}}
+{{name}}
+{{/extend}}
+
+<h2>
+    {{message}}
+</h2>
+
+<p style="white-space: pre-line; font: 13px monospace;">
+{{stack}}
+</p>
+
+{{/with}}

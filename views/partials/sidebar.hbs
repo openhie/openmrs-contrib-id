@@ -1,0 +1,15 @@
+{{#unless no_sidebar}}
+<div id="sidebar">
+    {{#each sidebar}}
+            {{{sidebarItem this}}}
+    {{/each}}
+
+    {{block "sidebar"}}
+    
+    {{#each defaultSidebar}}
+            {{{sidebarItem this}}}
+    {{/each}}
+
+    <div id="about">{{{about}}}</div>
+</div>
+{{/unless}}

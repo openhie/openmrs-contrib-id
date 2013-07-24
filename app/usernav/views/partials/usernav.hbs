@@ -1,0 +1,12 @@
+<ul id="user-nav">
+    {{#each navLinks}}
+    <a {{#if this.active}}class="active"{{/if}} href="{{this.url}}">
+        <li>
+            {{#if this.icon}}
+                <i class="{{this.icon}}"></i>
+            {{/if}}
+            {{this.name}}
+        </li>
+    </a>
+    {{/each}}
+</ul>

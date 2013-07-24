@@ -1,0 +1,10 @@
+{
+    "name": "viewengine",
+    "version": "0.0.1",
+    "author": "elliottwilliams",
+    "dependencies": [
+        "underscore", "*",
+        "async", "0.2.9",
+        "hbs", "~2.3.0"
+    ]
+}

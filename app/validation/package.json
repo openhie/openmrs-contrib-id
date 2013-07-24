@@ -1,0 +1,8 @@
+{
+    "name": "validation",
+    "version": "0.0.1",
+    "author": "elliottwilliams",
+    "dependencies": [
+        "recaptcha", "~1.2.0"
+    ]
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{{#block "title"}}OpenMRS ID{{/block}}</title>
+    <link rel="stylesheet" href="/resource/style.css">
+    <link rel="stylesheet" href="/resource/font/font-awesome.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/resource/omrsid.js"></script>
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-16695719-5']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    
+    </script>
+    
+    {{block "head_append"}}
+    
+    <script id="globalnav-script" src="/globalnav/js/app-optimized.js"></script>
+    
+    <!--[if lte IE 7]>
+    <link rel="stylesheet" href="/resource/font/font-awesome-ie7.css">
+    <![endif]-->
+</head>
+
+<body>
+<noscript><h3>JavaScript is required to properly use OpenMRS ID.</h3></noscript>
+<div id="header"> 
+  <div class="container">
+    <a href="/"><img id="logo" src="/resource/images/logo.png" alt="OpenMRS Community"></a>
+    
+    <ul id="services">
+      <li class="teal"><a href="http://wiki.openmrs.org"><span>Wiki</span></a></li>
+      <li class="yellow"><a href="http://tickets.openmrs.org"><span>Tickets</span></a></li>
+      <li class="blue"><a href="http://source.openmrs.org"><span>Source</span></a></li>
+      <li class="red" id="moreContainer">
+        <span>More...</span>
+        <ul id="more">
+          <a href="http://answers.openmrs.org"><li>Answers</li></a>
+          <a href="http://ci.openmrs.org"><li>CI Testing</li></a>
+          <a href="http://modules.openmrs.org"><li>Modules</li></a>
+          <a href="http://go.openmrs.org/mailinglists"><li>Groups</li></a>
+          <a href="http://svn.openmrs.org"><li>SVN</li></a>
+        </ul>
+      </li>
+    </ul>
+
+    {{> login_menu}}
+
+    <div class="clear"></div>
+  </div>
+</div>
+
+{{> usernav }}
+
+{{> headline}}
+
+{{> message}}
+
+<div id="content" class="container">
+  <div id="main" {{#if no_sidebar}}class="no-sidebar"{{/if}}>
+    {{{body}}}
+  </div>
+  
+  {{> sidebar}}    
+</div>
+
+
+<div class="clear"></div>
+{{block "body_append"}}
+</body>
+</html>

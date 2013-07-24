@@ -1,0 +1,11 @@
+<div id="headline" {{#unless hideAvatar}}class="with-avatar"{{/unless}}>
+    <h1>
+        {{#block "headline"}}
+        A Page.
+        {{/block}}
+
+        {{#unless hideAvatar}}{{#if connected}}
+        <img src="https://www.gravatar.com/avatar/{{user.mailHash}}?s=51" alt="{{user.displayName}}">
+        {{/if}}{{/unless}}
+    </h1>
+</div>

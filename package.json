@@ -1,31 +1,36 @@
 {
   "name": "openmrsid",
-  "version": "1.4.3",
+  "version": "1.5.0-beta",
   "description": "A self-service management system for the OpenMRS ID single sign on identity.",
-  "main": "./app/app.js",
+  "homepage": "https://github.com/openmrs/openmrs-contrib-id",
+  "main": "./app3x/app.js",
   "dependencies": {
-    "connect": "~2.3.3",
-    "connect-mysql-session": "~0.1.1",
-    "ejs": "~0.7.1",
-    "express": "~2.5.9",
-    "LDAP": "~1.0.4",
-    "log4js": "~0.5.0",
-    "mysql": "~2.0.0-alpha8",
-    "nodemailer": "~0.3.20",
-    "qs": "~0.4.2",
-    "querystring": "~0.1.0",
-    "recaptcha": "~1.1.0",
-    "sequelize": "~1.7.0-alpha2",
-    "xml2js": "~0.1.14"
+    "connect": "*",
+    "connect-mysql-session": "*",
+    "express": "*",
+    "LDAP": "*",
+    "log4js": "*",
+    "mysql": "*",
+    "nodemailer": "*",
+    "qs": "*",
+    "querystring": "*",
+    "recaptcha": "*",
+    "sequelize": "*",
+    "xml2js": "*",
+    "hbs": "~2.3.0"
   },
-  "engine": { "node": "~0.6.19" },
-  "devDependencies": {},
+  "engine": {
+    "node": "~0.10.12"
+  },
+  "devDependencies": {
+    "express-debug": "~1.0.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/downeym/OpenMRS-ID.git"
+    "url": "git://github.com/openmrs/openmrs-contrib-id.git"
   },
   "author": "elliottwilliams",
   "license": "MPL 2.0",

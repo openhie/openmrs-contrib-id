@@ -1,0 +1,8 @@
+{
+    "name": "ldap",
+    "version": "0.0.1",
+    "author": "elliottwilliams",
+    "dependencies": [
+        "LDAP", "~1.1.5"
+    ]
+}
