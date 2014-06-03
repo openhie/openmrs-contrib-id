@@ -66,10 +66,11 @@ app.post('/signup', mid.forceLogout, botproof.parsers,
       first = req.body.firstname,
       last = req.body.lastname,
       email = req.body.email,
+      org = req.body.organization,
       pass = req.body.password,
       captcha = req.body.recaptcha_response_field;
 
-    if (!id || !first || !last || !email || !pass || !captcha) {
+    if (!id || !first || !last || !email || !org || !pass || !captcha) {
       res.send('Unauthorized POST error', {
         'Content-Type': 'text/plain'
       }, 403);
@@ -110,7 +111,7 @@ app.post('/signup', mid.forceLogout, botproof.parsers,
     verification.begin({
       urlBase: 'signup',
       email: email,
-      subject: '[OpenMRS] Welcome to the OpenMRS Community',
+      subject: '[OpenHIE] Welcome to the OpenHIE Community',
       template: path.join(__dirname, '../views/welcome-verify-email.ejs'),
       // template: path.relative(global.__apppath, __dirname+'/../views/welcome-verify-email.ejs'),
       locals: {

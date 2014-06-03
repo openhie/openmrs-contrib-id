@@ -46,7 +46,7 @@
 			<span class="failtext">
 				Both a given name and surname are required.
 			</span>
-			Your name identifies you across the OpenMRS Community.
+			Your name identifies you across the OpenHIE Community.
 		</span>
 	</div>
 	
@@ -67,6 +67,20 @@
 			to control what mail you receive.
 		</span>
 	</div>
+
+	<div class="field<% if (fail.organization) { %> fail<% } %>">
+                <label>Organization</label>
+                <input type="text" name="<%=disguise('organization', spinner)%>"
+                        placeholder="Organization"
+                        <% if (values.organization) { %>value="<%= values.email %>"
+                        <% } else if (values.username && values.firstname && values.lastname && values.email) { %>
+                        autofocus<% } %>>
+
+                <span class="description">
+			Let us know what organization your are associated with.
+                </span>
+        </div>
+
 
 	<div class="field">
 		<label>Country</label>
