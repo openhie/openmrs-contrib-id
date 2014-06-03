@@ -20,8 +20,6 @@
 	</script>	
 	<%- headAppend %>
 	
-	<script id="globalnav-script" src="/globalnav/js/app-optimized.js"></script>
-	
 	<!--[if lte IE 7]>
 	<link rel="stylesheet" href="/resource/font/font-awesome-ie7.css">
 	<![endif]-->
@@ -30,33 +28,17 @@
 
 
 <body>
-<noscript><h3>JavaScript is required to properly use OpenMRS ID.</h3></noscript>
+<noscript><h3>JavaScript is required to properly use OpenHIE ID.</h3></noscript>
 <div id="header">	
 	<div class="container">
-		<a href="/"><img id="logo" src="/resource/images/logo.png" alt="OpenMRS Community"></a>
-		
-		<ul id="services">
-			<li class="teal"><a href="http://wiki.openmrs.org"><span>Wiki</span></a></li>
-			<li class="yellow"><a href="http://tickets.openmrs.org"><span>Tickets</span></a></li>
-			<li class="blue"><a href="http://source.openmrs.org"><span>Source</span></a></li>
-			<li class="red" id="moreContainer">
-				<span>More...</span>
-				<ul id="more">
-					<a href="http://answers.openmrs.org"><li>Answers</li></a>
-					<a href="http://ci.openmrs.org"><li>CI Testing</li></a>
-					<a href="http://modules.openmrs.org"><li>Modules</li></a>
-					<a href="http://go.openmrs.org/mailinglists"><li>Groups</li></a>
-					<a href="http://svn.openmrs.org"><li>SVN</li></a>
-				</ul>
-			</li>
-		</ul>
+		<a href="/"><img id="logo" src="/resource/images/logo.png" alt="OpenHIE Community"></a>
 		
 		
 	<div id="login-menu">	
 		<% if (!connected) { %>
 			<a href="/login" class="popover-trigger" data-popid="login">Log In</a>
 			<form action="/login" method="post" class="popover" data-popid="login">
-				<input class="use-placeholder" type="text" placeholder="OpenMRS ID" name="loginusername">
+				<input class="use-placeholder" type="text" placeholder="OpenHIE ID" name="loginusername">
 				<input class="use-placeholder" type="password" placeholder="Password" name="loginpassword">
 				<input type="submit" value="Log In &#187;">
 					<span class="failtext">Authentication failed.</span>
@@ -96,7 +78,7 @@
 <div id="headline" <% if (showHeadlineAvatar) { %>class="with-avatar"<% } %>>
 	<h1><%- headline %>
 	<% if (connected && showHeadlineAvatar) { %>
-	<img src="https://wiki.openmrs.org/rest/cas/1.0/avatar/server/<%= mailHash %>?s=51" alt="<%= user[conf.user.displayname] %>">
+	<img src="https://wiki.ohie.org/rest/cas/1.0/avatar/server/<%= mailHash %>?s=51" alt="<%= user[conf.user.displayname] %>">
 	<% } %>
 	</h1>
 </div>
