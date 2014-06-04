@@ -86,7 +86,7 @@ exports.begin = function(settings, callback) {
 
     try {
       mail.send_mail({
-        sender: "'OpenMRS ID Dashboard' <id-noreply@openmrs.org>",
+        sender: "'OpenHIE ID Dashboard' <id-noreply@ohie.org>",
         to: email,
         subject: subject,
         html: rendered
