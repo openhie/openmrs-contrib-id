@@ -1,5 +1,5 @@
 <% name = 'edit-profile' %>
-<% title = 'OpenMRS ID - Your Profile' %>
+<% title = 'OpenHIE ID - Your Profile' %>
 <% headline = user[conf.user.displayname]+"'s Profile" %>
 <% sidebar = ['sidebar/editprofile-avatar'] %>
 
@@ -17,7 +17,7 @@
 		<input type="text" name="lastname" placeholder="Surname" value="<%= (failed) ? values.lastname : user[conf.user.lastname] %>">
 		<span class="description">
 			<span class="failtext">Both a first and last name are required.</span>
-			Your name identifies you across the OpenMRS Community.
+			Your name identifies you across the OpenHIE Community.
 		</span>
 	</div>
 		

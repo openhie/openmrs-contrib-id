@@ -107,7 +107,7 @@ app.post('/profile', mid.forceLogin, mid.secToArray, validate(),
         urlBase: 'profile-email',
         email: mail,
         associatedId: updUser[conf.user.username],
-        subject: '[OpenMRS] Email address verification',
+        subject: '[OpenHIE] Email address verification',
         template: path.join(settings.viewPath,'/email/email-verify.ejs'),
         locals: {
           displayName: updUser[conf.user.displayname],
