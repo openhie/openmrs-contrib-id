@@ -89,7 +89,7 @@ app.post('/signup', mid.forceLogout, botproof.parsers,
       } else {
         finishCalls++;
         if (finishCalls == 2) { // display welcome & verify notification
-          req.flash('success', "<p>Thanks and welcome to the OpenMRS Community!</p>" + "<p>Before you can use your OpenMRS ID across our services, we need to verify your email address.</p>" + "<p>We've sent an email to <strong>" + email + "</strong> with instructions to complete the signup process.</p>");
+          req.flash('success', "<p>Thanks and welcome to the OpenHIE Community!</p>" + "<p>Before you can use your ID across our services, we need to verify your email address.</p>" + "<p>We've sent an email to <strong>" + email + "</strong> with instructions to complete the signup process.</p>");
           res.redirect('/signup/verify', 303);
         }
       }
