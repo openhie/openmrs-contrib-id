@@ -322,12 +322,6 @@ label {
 .multi-field .next {
 	opacity: 0.5;
 }
-/* Hide the honeypot field */
-.field:nth-of-type(4) {
-	display: none;
-}
-
-
 
 
 
