@@ -1,6 +1,6 @@
 {
   "name": "openmrsid",
-  "version": "1.4.4",
+  "version": "1.6.0",
   "description": "A self-service management system for the OpenMRS ID single sign on identity.",
   "main": "./app/app.js",
   "dependencies": {
@@ -18,7 +18,8 @@
     "sequelize": "~1.7.5",
     "xml2js": "~0.1.14",
     "underscore": "~1.5.2",
-    "async": "~0.2.9"
+    "async": "~0.2.9",
+    "less-middleware": "~1.0.3"
   },
   "engine": {
     "node": "~0.8.26"
