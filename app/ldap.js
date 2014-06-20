@@ -185,7 +185,7 @@ exports.getUser = function(user, cb) {
         scope: system.SUBTREE,
         filter: '(' + conf.ldap.user.rdn + '=' + user + ')',
         attrs: conf.ldap.user.username + ' ' + conf.ldap.user.firstname + ' ' + conf.ldap.user.lastname + ' ' + conf.ldap.user.displayname + ' ' +
-          conf.ldap.user.email + ' ' + conf.ldap.user.secondaryemail + ' objectClass'
+          conf.ldap.user.email + ' ' + conf.ldap.user.secondaryemail +  ' ' + conf.ldap.user.org + 'objectClass'
       }, function(e, d) {
         if (e) return cb(e);
 
@@ -366,6 +366,7 @@ exports.addUser = function(id, given, family, email, password, cb) {
       user[conf.ldap.user.lastname] = family;
       user[conf.ldap.user.displayname] = given + ' ' + family;
       user[conf.ldap.user.email] = email;
+      //TODO: Add org here
       user[conf.ldap.user.password] = password;
       user.objectClass = conf.ldap.user.defaultObjectClass;
       user.dn = conf.ldap.user.rdn + '=' + id + ',' + conf.ldap.user.baseDn;
