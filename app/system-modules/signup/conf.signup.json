@@ -12,6 +12,7 @@
     "requiredSubmitTimeSec": 5,
     "signupFormMaxAgeHours": 12,
     "honeypotFieldName": "country",
+    "disableHoneypot": true,
 
     "dnsSpamLists": {
         "bl.spamcop.net": {
