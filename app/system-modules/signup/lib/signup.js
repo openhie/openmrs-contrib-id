@@ -70,43 +70,38 @@ app.get(/^\/signup\/?$|^\/$/i, validate.receive, botproof.generators,
   });
 });
 
-// prevent from getting 404'd if a logged-in user hits /signup
-app.get('/signup', mid.forceLogout);
-
 app.post('/signup', mid.forceLogout, botproof.parsers,
-  signupMiddleware.includeEmpties,
-  signupMiddleware.validator, function(req, res, next) {
+  signupMiddleware.includeEmpties, validate(), function(req, res, next) {
+    var id = req.body.username,
+      first = req.body.firstname,
+      last = req.body.lastname,
+      email = req.body.email,
+      org = req.body.organization,
+      pass = req.body.password,
+      captcha = req.body.recaptcha_response_field;
 
-  var id = req.body.username;
-  var first = req.body.firstName;
-  var last = req.body.lastName;
-  var email = req.body.primaryEmail;
-  var pass = req.body.password;
+    if (!id || !first || !last || !email || !org || !pass || !captcha) {
+      res.send('Unauthorized POST error', {
+        'Content-Type': 'text/plain'
+      }, 403);
+      res.end();
+    }
 
-  id = id.toLowerCase();
+    var id = id.toLowerCase();
 
-  var newUser = new User({
-    username: id,
-    firstName: first,
-    lastName: last,
-    displayName: first + ' ' + last,
-    primaryEmail: email,
-    emailList: [email],
-    password: pass,
-    locked: true,
-  });
-  var verificationOptions = {
-    urlBase: 'signup',
-    email: email,
-    category: verification.categories.signup,
-    subject: '[OpenMRS] Welcome to the OpenMRS Community',
-    template: path.join(__dirname, '../views/welcome-verify-email.ejs'),
-    locals: {
-      displayName: first + ' ' + last,
-      username: id,
-      userCredentials: {
-        id: id,
-        email: email
+    // will be called after account is created and validation process started
+    var finishCalls = 0,
+      errored = false;
+    var finish = function(err) {
+      if (err && errored == false) { // handle error
+        return next(err);
+        errored = true;
+      } else {
+        finishCalls++;
+        if (finishCalls == 2) { // display welcome & verify notification
+          req.flash('success', "<p>Thanks and welcome to the OpenHIE Community!</p>" + "<p>Before you can use your ID across our services, we need to verify your email address.</p>" + "<p>We've sent an email to <strong>" + email + "</strong> with instructions to complete the signup process.</p>");
+          res.redirect('/signup/verify', 303);
+        }
       }
     },
     timeout: 0
@@ -130,7 +125,39 @@ app.post('/signup', mid.forceLogout, botproof.parsers,
     '<p>We\'ve sent an email to <strong>' + email +
     '</strong> with instructions to complete the signup process.</p>');
 
-    res.redirect('/signup/verify', 303);
+    // add the user to ldap
+    ldap.addUser(id, first, last, email, pass, function(e, userobj) {
+      if (e) finish(e);
+      log.info('created account "' + id + '"');
+
+      // lock out the account until it has been verified
+      ldap.lockoutUser(id, function(err) {
+        if (err) finish(err);
+        finish();
+      });
+    });
+
+    // validate email before completing signup
+    verification.begin({
+      urlBase: 'signup',
+      email: email,
+      subject: '[OpenHIE] Welcome to the OpenHIE Community',
+      template: path.join(__dirname, '../views/welcome-verify-email.ejs'),
+      // template: path.relative(global.__apppath, __dirname+'/../views/welcome-verify-email.ejs'),
+      locals: {
+        displayName: first + ' ' + last,
+        username: id,
+        userCredentials: {
+          id: id,
+          email: email
+        }
+      },
+      timeout: 0
+    }, function(err) {
+      if (err) finish(err);
+
+      finish();
+    });
   });
 });
 

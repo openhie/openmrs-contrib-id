@@ -1,9 +1,10 @@
 {
     "signupFieldNames": [
         "username",
-        "firstName",
-        "lastName",
-        "primaryEmail",
+        "firstname",
+        "lastname",
+        "email",
+	"organization",
         "password",
         "recaptcha_response_field",
         "timestamp"

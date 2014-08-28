@@ -1,6 +1,6 @@
 <% name = 'login' %>
-<% title = 'OpenMRS ID - Login' %>
-<% headline = 'Login with your OpenMRS ID' %>
+<% title = 'OpenHIE ID - Login' %>
+<% headline = 'Login with your OpenHIE ID' %>
 <% sidebar.unshift('sidebar/id-whatis') %>
 
 <form action="/login" method="post">
@@ -8,11 +8,11 @@
 	<input type="hidden" name="destination" id="redirect-to">
 	
 	<div class="field<% if (fail.loginusername) {%> fail<% } %>">
-		<label>OpenMRS ID</label>
-		<input type="text" name="loginusername" placeholder="OpenMRS ID" <% if (failed) { %>value="<%= values.loginusername %>"<% } %> autofocus>
+		<label>OpenHIE ID</label>
+		<input type="text" name="loginusername" placeholder="OpenHIE ID" <% if (failed) { %>value="<%= values.loginusername %>"<% } %> autofocus>
 		<span class="description failtext">
 			<% if (values.loginusername == '') { %>A username must be supplied to log in.<% }
-			else { %>Make sure you are entering your OpenMRS ID, not your email address.<% } %>
+			else { %>Make sure you are entering your OpenHIE ID, not your email address.<% } %>
 		</span>
 	</div>
 	
@@ -24,8 +24,7 @@
 			else { %>If you have forgotten your password, you can <a href="/reset">reset it here</a>.<% } %>
 		</span>
 	</div>
-	
 	<div class="field">
-		<input class="btn btn-success" type="submit" value="Login with OpenMRS ID &#187;">
+		<input class="btn btn-success" type="submit" value="Login with OpenHIE ID &#187;">
 	</div>
 </form>

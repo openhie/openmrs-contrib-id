@@ -78,9 +78,32 @@ app.post('/profile', mid.forceLogin, profileMid.profileValidator,
 
   var username = req.session.user.username;
 
-  var findUser = function (callback) {
-    User.findByUsername(username, callback);
-  };
+  if (emailsChanged.length > 0) {
+    // begin verificaiton for each changed address
+    emailsChanged.forEach(function(mail) {
+      // verify these adresses
+      log.debug(updUser[conf.user.username] + ': email address ' +
+        mail + ' will be verified');
+
+      // create verification instance
+      verification.begin({
+        urlBase: 'profile-email',
+        email: mail,
+        associatedId: updUser[conf.user.username],
+        subject: '[OpenHIE] Email address verification',
+        template: path.join(settings.viewPath,'/email/email-verify.ejs'),
+        locals: {
+          displayName: updUser[conf.user.displayname],
+          username: updUser[conf.user.username],
+          mail: mail,
+          newToOld: newToOld,
+          secondary: body.secondaryemail
+        }
+      }, function(err) {
+        if (err) {
+          log.error(err);
+        }
+      });
 
   var updateUser = function (user, callback) {
     user.firstName = req.body.firstName;

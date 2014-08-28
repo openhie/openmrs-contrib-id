@@ -95,20 +95,18 @@ exports.begin = function(settings, callback) {
         siteURL: conf.site.url,
         expireDate: expireDate.toLocaleString(),
         url: url,
-      });
-      var template = data.toString();
-      var rendered = ejs.render(template, {locals: locals});
+      })
+    });
 
-      try {
-        mail.send_mail({
-          sender: "'OpenMRS ID Dashboard' <id-noreply@openmrs.org>",
-          to: email,
-          subject: subject,
-          html: rendered
-        }, function(e, success) {
-          if (e) {
-            return cb(e);
-          }
+    try {
+      mail.send_mail({
+        sender: "'OpenHIE ID Dashboard' <id-noreply@ohie.org>",
+        to: email,
+        subject: subject,
+        html: rendered
+      }, function(e, success) {
+        if (e) return callback(e);
+        else {
           log.info(urlBase + ' email verification sent to ' + email + '.');
           return cb();
         });

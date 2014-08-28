@@ -60,8 +60,7 @@ app.post('/reset', mid.forceLogout, function(req, res, next) {
       verification.begin({
         urlBase: 'reset',
         email: address,
-        category: verification.categories.resetPwd,
-        subject: '[OpenMRS] Password Reset for ' + username,
+        subject: '[OpenHIE] Password Reset for ' + username,
         template: path.join(settings.viewPath, 'email/password-reset.ejs'),
         locals: {
           username: username,
@@ -139,7 +138,7 @@ app.post('/reset/:id', mid.forceLogout, resetMid.validator,
         log.info('password reset for "' + username + '"');
         verification.clear(req.params.id); // remove validation from DB
         req.flash('success', 'Password has been reset successfully. ' +
-          'You may now log in across the OpenMRS Community.');
+          'You may now log in across the OpenHIE Community.');
         res.redirect('/');
       });
     });
